@@ -10,7 +10,7 @@ void setup() {
   sim = new Simulation();
   p  = new Particle(0.5, 0.5, 0.01, 0.0);
   obs = sim.getObstacles();
-  bar = new PlayerBar((double) width/2, height - (double) height/10, (double) height/100, (double) width/50);
+  bar = new PlayerBar((double) width/2, height - (double) 450/height, (double) height/100, (double) width/50);
 }
 
 
@@ -26,6 +26,8 @@ void draw() {
   circle((float)(p.getX()*width), height - (float)(p.getY()*height), (float)(p.getRadius()*width));
 
   fill (0, 0, 255);
+  bar.setX((double)mouseX/width);
+  bar.setY((double) (height - 450)/height);
   circle(mouseX, 450, (float)(bar.getRadius()*width));
   p.handleCollision(bar);
 
