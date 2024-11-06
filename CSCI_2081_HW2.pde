@@ -26,6 +26,8 @@ void draw() {
   circle((float)(p.getX()*width), height - (float)(p.getY()*height), (float)(p.getRadius()*width));
 
   fill (0, 0, 255);
+  bar.setX((double)mouseX/width);
+  bar.setY((double) (height - 450)/height);
   circle(mouseX, 450, (float)(bar.getRadius()*width));
   p.handleCollision(bar);
 
