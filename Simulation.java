@@ -25,7 +25,7 @@ public class Simulation {
         }
         int index = numParticles;
         for (int i = 0; i < amount; ++i) {
-            particles[index + i] = new Particle(((1.0*i)/amount), 1.0, 0.01);
+            particles[index + i] = new Particle(((1.0*i)/amount), 1.0, 0.01, 0.0);
             particles[index + i].setVelocity(0.0, 0.0);
             ++numParticles;
         }

@@ -8,7 +8,7 @@ void setup() {
   size(500, 500);
   ellipseMode(RADIUS);
   sim = new Simulation();
-  p  = new Particle(0.5, 0.5, 0.01, 0.0);
+  p  = new Particle();
   obs = sim.getObstacles();
   bar = new PlayerBar((double) width/2, height - (double) height/10, (double) height/100, (double) width/50);
 }
@@ -25,9 +25,7 @@ void draw() {
   p.update(0.01);
   circle((float)(p.getX()*width), height - (float)(p.getY()*height), (float)(p.getRadius()*width));
 
-  fill (0, 0, 255);
-  circle(mouseX, 450, (float)(bar.getRadius()*width));
-  p.handleCollision(bar);
+  circle(mouseX, height - (float)(bar.getY()*height), (float)(bar.getRadius()*width));
 
 
   //Obstacles
