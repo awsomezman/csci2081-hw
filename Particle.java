@@ -7,13 +7,13 @@ public class Particle {
     private double gravity;
 
 
-    public Particle(double xPos, double yPos, double r) {
+    public Particle(double xPos, double yPos, double r, double grav) {
         this.x = xPos;
         this.y = yPos;
         this.radius = r;
         this.velocityX = 0.0;
-        this.velocityY = 0.0;
-        gravity = -1.0;
+        this.velocityY = -0.5;
+        this.gravity = grav;
     }
     
     public double getX() {
@@ -83,8 +83,14 @@ public class Particle {
             y = radius;
 
             //bounce
-            velocityY = -1.0 * velocityY * 0.6;
+            velocityY = -1.0 * velocityY;
         }
+        if (y >= 1 - radius) {
+            y = 1 - radius;
+
+            velocityY = -1.0 * velocityY;
+        }
+
     }
 
     public void handleCollision(Obstacle obstacle) {
@@ -102,6 +108,11 @@ public class Particle {
                 velocityX = reflect[0] * 0.5;
                 velocityY = reflect[1] * 0.5;
             }
+            if (obstacle instanceof PlayerBar) {
+                if (velocityY < 0) {
+                    velocityY = -velocityY;
+                }
+            } 
         }
     }
 

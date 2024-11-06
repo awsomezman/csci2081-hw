@@ -1,7 +1,7 @@
 public class Obstacle {
-    private double x;
-    private double y;
-    private double radius;
+    protected double x;
+    protected double y;
+    protected double radius;
 
     public Obstacle(double xPos, double yPos, double r) {
         this.x = xPos;
