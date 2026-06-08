@@ -1,0 +1,58 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.*;
+
+public class ObstacleAPI {
+    public void addObstacle(double x, double y) {
+        try {
+          OkHttpClient client = new OkHttpClient().newBuilder()
+          .build();
+          MediaType mediaType = MediaType.parse("application/json");
+          RequestBody body = RequestBody.create(mediaType, "{\r\n    \"x\": " +x + ",\r\n    \"y\": " +y + ",\r\n    \"button\": \"right\"\r\n}");
+          Request request = new Request.Builder()
+            .url("http://127.0.0.1:5000/obstacle")
+            .method("POST", body)
+            .addHeader("Content-Type", "application/json")
+            .build();
+          Response response = client.newCall(request).execute();
+        }
+        catch(Exception ex) {
+          System.out.println("There was an error.");
+        }
+    }
+    public void deleteObstacle(int index) {
+        try {
+          OkHttpClient client = new OkHttpClient().newBuilder()
+          .build();
+          MediaType mediaType = MediaType.parse("application/json");
+          RequestBody body = RequestBody.create(mediaType, index);
+          Request request = new Request.Builder()
+            .url("http://127.0.0.1:5000/obstacle")
+            .method("DELETE", body)
+            .addHeader("Content-Type", "application/json")
+            .build();
+          Response response = client.newCall(request).execute();
+        }
+        catch(Exception ex) {
+          System.out.println("There was an error.");
+        }
+    }
+    public void getObstacles() {
+        try {
+          OkHttpClient client = new OkHttpClient().newBuilder()
+          .build();
+          MediaType mediaType = MediaType.parse("application/json");
+          RequestBody body = RequestBody.create(mediaType, "{\r\n    \"x\": " +x + ",\r\n    \"y\": " +y + ",\r\n    \"button\": \"right\"\r\n}");
+          Request request = new Request.Builder()
+            .url("http://127.0.0.1:5000/obstacles")
+            .method("GET", body)
+            .addHeader("Content-Type", "application/json")
+            .build();
+          Response response = client.newCall(request).execute();
+        }
+        catch(Exception ex) {
+          System.out.println("There was an error.");
+        }
+    }
+}
+  
